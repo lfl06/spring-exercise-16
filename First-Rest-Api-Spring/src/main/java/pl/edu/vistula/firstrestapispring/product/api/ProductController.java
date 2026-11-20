@@ -1,6 +1,7 @@
 package pl.edu.vistula.firstrestapispring.product.api;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +22,7 @@ public class ProductController {
 
     @PostMapping
     @Operation(summary = "Create product")
+    @ApiResponse(responseCode = "201", description = "Product created")
     public ResponseEntity<ProductResponse> create(@RequestBody ProductRequest productRequest){
         ProductResponse productResponse = productService.create(productRequest);
         return new ResponseEntity<>(productResponse, HttpStatus.CREATED);
@@ -49,6 +51,7 @@ public class ProductController {
 
     @DeleteMapping("/{id}")
     @Operation(summary = "Delete item")
+    @ApiResponse(responseCode = "204", description = "Product deleted")
     public ResponseEntity<Void> delete(@PathVariable Long id){
         productService.delete(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();

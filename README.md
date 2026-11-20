@@ -171,6 +171,7 @@ public class Product {
 `ProductRepository` is now a single interface. The old HashMap class was kept as `OldProductRepository`.
 
 ```java
+@Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 }
 ```
